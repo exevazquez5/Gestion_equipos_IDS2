@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center pt-3">SISTEMA GESTION EQUIPOS</h2>
+<hr>
+    <div class="col-5 m-auto" >
+        <ul class="list-group text-center">
+            <li class="list-group-item"><b></b><a href="{{ url_for('registrar_equipo_render') }}" class="btn btn-success">Registrar equipo</a></b></li>
+            <li class="list-group-item"><b><a href="{{ url_for('listar_equipos_render') }}" class="btn btn-warning">Listar equipos</a></b></li>
+            <li class="list-group-item"><b><a href="{{ url_for('buscar_equipo') }}" class="btn btn-warning">Buscar equipo por Nro orden</a></b></li>
+        </ul>
+    </div>
+
+{% endblock %}
+

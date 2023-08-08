@@ -1,0 +1,72 @@
+{%extends 'base.html' %}
+
+{% block title %}Todos los equipos{% endblock %}
+
+{% block content %}
+<h3 class="text-center">&bull; Listado de equipos &bull;</h3>
+<table class="table col-8 m-auto">
+    <thead class="thead-dark text-center">
+        <tr>
+            <th class="col-1">Orden</th>
+            <th class="col-3">Nombre</th>
+            <th class="col-3">Tipo</th>
+            <th class="col-3">Marca</th>
+            <th class="col-3">Modelo</th>
+            <th class="col-3">Desc.Problema</th>
+            <th class="col-3">Acciones</th>
+        </tr>
+    </thead>
+
+    {% for equipo in lista_equipos %}
+    <tr>
+        <td>{{ equipo.id }}</td>
+        <td>{{ equipo.nombre }}</td>
+        <td>{{ equipo.tipo }}</td>
+        <td>{{ equipo.marca }}</td>
+        <td>{{ equipo.modelo }}</td>
+        <td>{{ equipo.desc }}</td>
+
+        <!-- enlace para editar el equipo -->
+        <td> 
+            <a href="{{ url_for("editar_equipo", id=equipo.id) }}" class="btn btn-primary">Editar</a>
+        </td>
+
+        <!-- enlace para eliminar el equipo -->
+        <!-- enlace para eliminar el equipo -->
+        <td>
+            <a href="{{ url_for('borrar_equipo', id=equipo.id) }}" class="btn btn-danger" onclick="event.preventDefault(); eliminarEquipo({{ equipo.id }});">Eliminar</a>
+        </td>
+
+        
+        
+        
+
+    </tr>
+    {% endfor %}
+</table>
+{% block scripts %}
+<script>
+    function eliminarEquipo(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este equipo?")) {
+            $.ajax({
+                url: `/api/borrar_equipo/${id}`,
+                type: 'DELETE',
+                success: function(data) {
+                    if ('message' in data) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.error);
+                    }
+                },
+                error: function(error) {
+                    console.error(error);
+                    alert('Error al eliminar el equipo');
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}
+
+{% endblock %}

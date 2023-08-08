@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Equipo{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Registrar un nuevo equipo</h1>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+
+
+    <form action="/api/registrar_equipo" method="POST" class="form">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="form-control">
+      </div>
+
+
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo" class="form-control">
+          <option value="celular">Celular</option>
+          <option value="notebook">Notebook</option>
+          <option value="tablet">Tablet</option>
+          <option value="pc">PC</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" id="marca" name="marca" class="form-control">
+      </div>
+
+
+      <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <input type="text" id="modelo" name="modelo" class="form-control">
+      </div>
+
+
+      <div class="form-group">
+        <label for="desc">Descripción</label>
+        <textarea id="desc" name="desc" class="form-control" rows="4"></textarea>
+      </div>
+
+
+      <button type="submit" value="Registrar" class="btn btn-primary">Registrar equipo</button>
+    </form>
+  </div>
+{% endblock %}

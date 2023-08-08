@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+<html>
+    
+    
+    {% block content %}
+        <h1> Buscar Equipo por N° Orden </h1>
+        {{ wtf.quick_form(form) }}
+    {% endblock %}
+</html>

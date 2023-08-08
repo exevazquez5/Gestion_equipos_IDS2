@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+<html>
+
+    {% block title %} Equipo N° Orden {{equipo_buscado.id}} {% endblock %}
+
+    {% block content %}
+    <h3 class="text-center">&bull; DETALLES EQUIPO &bull; </h3>
+    <div class="col-3 m-auto">
+        <ul class="list-group text-center">
+            <li class="list-group-item"><b>N° Orden:</b> {{equipo_buscado.id}}</li>
+            <li class="list-group-item"><b>Nombre:</b> {{equipo_buscado.nombre}}</li>
+            <li class="list-group-item"><b>Tipo:</b> {{equipo_buscado.tipo}}</li>
+            <li class="list-group-item"><b>Marca:</b> {{equipo_buscado.marca}}</li>
+            <li class="list-group-item"><b>Modelo:</b> {{equipo_buscado.modelo}}</li>
+            <li class="list-group-item"><b>Desc.Problema:</b> {{equipo_buscado.desc}}</li>
+        </ul>
+    </div>
+    {% endblock %}
+</html>

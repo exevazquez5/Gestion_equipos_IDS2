@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+    {% block head %}
+        {{ super() }}
+        <style>
+            input[type=submit] {
+                background-color: #5cb85c;
+                border-color: #4cae4c;
+            }
+        </style>
+    {% endblock %}
+
+    {% block content %}
+        <h1 class="text-center"> Buscar Equipo por N° Orden </h1>
+        {{ wtf.quick_form(form) }}
+    {% endblock %}

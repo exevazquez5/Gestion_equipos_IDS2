@@ -1,0 +1,60 @@
+<html>
+<head> 
+  <title>{% block title %}Bienvenido a GESTIONCELU{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.min.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  {% block navbar %}
+
+  <ul class="nav justify-content-around navbar navbar-dark bg-dark">
+    <li class="nav-item">
+      <a class="navbar-brand" href="{{ url_for('home') }}">
+        <i class="fas fa-home"></i> <!-- Icono de home -->
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="navbar-brand" href="{{ url_for('logout') }}">
+        <i class="fas fa-sign-out-alt"></i> <!-- Icono de logout -->
+      </a>
+  </ul>
+{% endblock %}
+
+</head>
+
+<div class="container">
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-warning">
+    <button type="button" onclick="dismiss(this)" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+  </div>
+  {% endfor %}
+  
+  {% block content %}{% endblock %}
+</div>
+
+<body>
+
+  {% block body %}{% endblock %}
+
+  <footer class="text-center bg-dark d-flex justify-content-center">
+    <div class="container p-2">
+    {% block footer %}
+      <p class="text-light bg-dark m-2">Proyecto Final © 2023 Diplomatura Desarrollo Web - Vázquez Exequiel</p>
+    {% endblock %}
+  </div>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+    function dismiss(flash) {
+      $(flash).parent().remove();
+    }
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>
